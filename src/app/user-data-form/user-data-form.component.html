@@ -1,1 +1,12 @@
 <p>user-data-form works!</p>
+
+<form [formGroup]="userDataForm" (ngSubmit)="handleSubmit()">
+  <p *ngFor="let name of fieldNameArr; let i=index">
+    <label> {{name}} </label>
+    <input type="text" [formControlName]='name' required />
+  </p>
+
+  <p>
+    <button type="submit" [disabled]="!userDataForm.valid"> Submit </button>
+  </p>
+</form>

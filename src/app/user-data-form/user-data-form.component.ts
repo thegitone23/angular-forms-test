@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-user-data-form',
@@ -7,9 +8,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserDataFormComponent implements OnInit {
 
-  constructor() { }
+  userDataForm : FormGroup;
+  fieldNameArr = ['First Name', 'Last Name', 'Age', 'State', 'District'];
+  formContolArr = []; 
+
+
+  constructor(fb : FormBuilder) {
+
+    let obj = {};
+    for(let i=0; i<this.fieldNameArr.length; i++)
+    {
+      // @ts-ignore
+      obj[this.fieldNameArr[i]] = this.formContolArr[i] = new FormControl('', Validators.required);
+    }
+    this.userDataForm = fb.group(obj);
+   
+  }
 
   ngOnInit(): void {
+  }
+
+  handleSubmit() {
+    console.log('Submit Detected .. Printing Submitted Data');
+    console.log(this.userDataForm.value);
   }
 
 }
