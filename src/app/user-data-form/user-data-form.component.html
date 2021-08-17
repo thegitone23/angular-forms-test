@@ -2,8 +2,13 @@
 
 <form [formGroup]="userDataForm" (ngSubmit)="handleSubmit()">
   <p *ngFor="let name of fieldNameArr; let i=index">
-    <label> {{name}} </label>
-    <input type="text" [formControlName]='name' required />
+      <label> {{name}} </label>
+      
+      <input *ngIf="i < 3" type="text" [formControlName]='name' required />
+
+      <select *ngIf="i > 2" [formControlName]='name' required>
+        <option [value]="name" > {{name}} </option>
+      </select>
   </p>
 
   <p>
