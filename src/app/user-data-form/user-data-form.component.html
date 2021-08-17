@@ -3,13 +3,21 @@
 <form [formGroup]="userDataForm" (ngSubmit)="handleSubmit()">
   <p *ngFor="let name of fieldNameArr; let i=index">
       <label> {{name}} </label>
-      
-      <input *ngIf="i < 3" type="text" [formControlName]='name' required />
 
-      <select *ngIf="i > 2" [formControlName]='name' required>
-        <option [value]="name" > {{name}} </option>
+      <input *ngIf="i < 2" type="text" [formControlName]='name' required />
+      
+      <input *ngIf="i == 2" type="number" [formControlName]='name' required />
+
+
+      <select *ngIf="i === 3" [formControlName]='name' required>
+        <option *ngFor="let val of mapping_obj().States" [value]="val"> {{val}} </option>
       </select>
-  </p>
+
+      <select *ngIf="i === 4" [formControlName]='name' required>
+        <option *ngFor="let val of district_arr()" [value]="val"> {{val}} </option>
+      </select>
+
+    </p>
 
   <p>
     <button type="submit" [disabled]="!userDataForm.valid"> Submit </button>
