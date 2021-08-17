@@ -1,0 +1,5 @@
+{
+  "States": ["Himachal", "Karnataka"],
+  "Himachal": ["Bilaspur", "Chamba", "Hamirpur", "Sirmour"],
+  "Karnataka": ["Bagalkot", "Belgaum", "Bengaluru"] 
+}
